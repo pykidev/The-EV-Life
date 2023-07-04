@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors
+// ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 
@@ -7,10 +7,12 @@ class ChooseLocation extends StatefulWidget {
   _ChooseLocationState createState() => _ChooseLocationState();
 }
 
-
 class _ChooseLocationState extends State<ChooseLocation> {
+ 
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
+    print("build state run");
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(

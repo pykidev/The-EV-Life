@@ -6,7 +6,7 @@ import 'package:location_app_net_ninjas/pages/home.dart';
 import 'package:location_app_net_ninjas/pages/loading.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/home',
+  initialRoute: '/',
   routes: {
     '/': (context) => Loading(),
     '/home': (context) => Home(),
