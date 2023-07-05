@@ -25,8 +25,11 @@ void main() => runApp(MaterialApp(
     ) ,
     body: const Padding(
       padding: EdgeInsets.all(25.0),
-      child:MyCustomForm())
-    ,)
+      child:MyCustomForm()
+      ),
+  )
+    // floatingActionButton: FloatingActionButton(onPressed: onPressed),)
+
 ));
 
 class MyCustomForm extends StatefulWidget {
@@ -41,6 +44,18 @@ class MyCustomFormState extends State<MyCustomForm>{
   //and allows validation of the form
   //Note: This is a 'GlobalKey<FormState>'
   final _formKey = GlobalKey<FormState>();
+
+  final myController = TextEditingController();
+  final myController2 = TextEditingController();
+
+  @override
+  void dispose(){
+    //clean up the controller when the widget is disposed
+    myController.dispose();
+    myController2.dispose();
+    super.dispose();
+
+  }
 
   @override
   Widget build(BuildContext context){
@@ -57,6 +72,7 @@ class MyCustomFormState extends State<MyCustomForm>{
               }
               return null;
             },
+            controller: myController,
             decoration: const InputDecoration(
               hintText: 'Username',
             ),
@@ -69,6 +85,7 @@ class MyCustomFormState extends State<MyCustomForm>{
               }
               return null;
             },
+            controller: myController2,
             decoration: const InputDecoration(
               hintText: 'Password',
             ),
@@ -79,12 +96,13 @@ class MyCustomFormState extends State<MyCustomForm>{
               if(_formKey.currentState!.validate()){
                 //if the form is valid, display snackbar.
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Processing Data')),
+                   SnackBar(content: Text('Username: ${myController.text}\nPassword: ${myController2.text}')),
                 );
               }
             }, 
             child: const Text('Submit')
             ),
+            // Text(myController.text())
         ],
       ),
     );
