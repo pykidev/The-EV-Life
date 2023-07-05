@@ -55,6 +55,21 @@ class MyCustomFormState extends State<MyCustomForm>{
               }
               return null;
             },
+            decoration: const InputDecoration(
+              hintText: 'Username',
+            ),
+          ),
+          TextFormField(
+            //the validator receives the text that the user has entered
+            validator: (value) {
+              if(value == null || value.isEmpty) {
+                return 'Please enter some text';
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              hintText: 'Password',
+            ),
           ),
           ElevatedButton(
             onPressed: () {
@@ -66,10 +81,8 @@ class MyCustomFormState extends State<MyCustomForm>{
                 );
               }
             }, 
-            child: Text('Submit')
+            child: const Text('Submit')
             ),
-
-
         ],
       ),
     );
