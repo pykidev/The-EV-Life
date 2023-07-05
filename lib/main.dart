@@ -23,7 +23,9 @@ void main() => runApp(MaterialApp(
       title: const Text('Flutter Form'),
       centerTitle: true,
     ) ,
-    body: const MyCustomForm()
+    body: const Padding(
+      padding: EdgeInsets.all(20.0),
+      child:MyCustomForm())
     ,)
 ));
 
