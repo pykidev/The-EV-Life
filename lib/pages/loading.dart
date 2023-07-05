@@ -19,6 +19,7 @@ class _LoadingState extends State<Loading> {
   void getData() async {
     var url = Uri.https('jsonplaceholder.typicode.com','/todos/1');
     Response response = await get(url);
+    await Future.delayed(Duration(seconds: 10));
     Navigator.pushReplacementNamed(context, '/');
 
     // if(response.statusCode == 200){
@@ -37,14 +38,14 @@ class _LoadingState extends State<Loading> {
 
   @override
   Widget build(BuildContext context) {
-    // final data = ModalRoute.of(context)?.settings.arguments as Map<String, String>;
+    // final data = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     // print(data);
     
     return Scaffold(
         body: Center(
         child: LoadingAnimationWidget.threeRotatingDots(
           color: Color.fromRGBO(75, 145, 241, 1),
-          size: 200,
+          size: 75,
         ),
     ),
   );
