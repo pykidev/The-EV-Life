@@ -1,4 +1,7 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:the_ev_life_app/customClasses/formData.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -72,10 +75,14 @@ class LoginFormState extends State<LoginForm>{
               //Validate returns true if form is valid, or false otherwise
               if(_formKey.currentState!.validate()){
                 //if the form is valid, display snackbar.
-                ScaffoldMessenger.of(context).showSnackBar(
-                   SnackBar(content: Text('Username: ${myController.text}\nPassword: ${myController2.text}')),
-                );
-                Navigator.pushNamed(context, '/');
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //    SnackBar(content: Text('Username: ${myController.text}\nPassword: ${myController2.text}')),
+                // );
+                Navigator.pushNamed(context, '/loading', arguments: {
+                  'username': myController.text,
+                  'password':myController2.text,
+                  'formKey':_formKey.toString()
+                  });
               }
             }, 
             child: const Text(
