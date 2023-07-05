@@ -24,7 +24,7 @@ void main() => runApp(MaterialApp(
       centerTitle: true,
     ) ,
     body: const Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(25.0),
       child:MyCustomForm())
     ,)
 ));
