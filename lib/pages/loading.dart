@@ -16,28 +16,29 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   // bool _dataReceived = false;
 
-  Future getData(BuildContext context) async {
+  void getData() async {
     var url = Uri.https('jsonplaceholder.typicode.com','/todos/1');
     Response response = await get(url);
-    
+    Navigator.pushReplacementNamed(context, '/');
 
-    if(response.statusCode == 200){
-      print(jsonDecode(response.body));
-      // _dataReceived = true;
-      Navigator.pushNamed(context, '/');
-    }
+    // if(response.statusCode == 200){
+    //   print(jsonDecode(response.body));
+    //   // _dataReceived = true;
+      
+    // }
   }
 
   @override
   void initState(){
-    getData(context);
     super.initState();
+    getData();
+    
   }
 
   @override
   Widget build(BuildContext context) {
-    final data = ModalRoute.of(context)?.settings.arguments as Map<String, String>;
-    print(data);
+    // final data = ModalRoute.of(context)?.settings.arguments as Map<String, String>;
+    // print(data);
     
     return Scaffold(
         body: Center(
