@@ -75,9 +75,14 @@ class LoginFormState extends State<LoginForm>{
                 ScaffoldMessenger.of(context).showSnackBar(
                    SnackBar(content: Text('Username: ${myController.text}\nPassword: ${myController2.text}')),
                 );
+                Navigator.pushNamed(context, '/');
               }
             }, 
-            child: const Text('Submit')
+            child: const Text(
+              'Submit',
+              style: TextStyle(
+                fontSize: 20.0
+              ),)
             ),
             // Text(myController.text())
         ],

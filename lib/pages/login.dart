@@ -14,6 +14,15 @@ class LoginState extends State<Login> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Image(
+                image: AssetImage('images/the-ev-life-high-resolution-logo-color-on-transparent-background.png')              
+              ),
+            ),
+            const SizedBox(
+              height: 45.0,
+            ),
             Container(
               padding: EdgeInsets.all(20.0),
               child: LoginForm(),

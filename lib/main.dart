@@ -10,10 +10,10 @@ import 'package:the_ev_life_app/pages/loading.dart';
 import 'package:the_ev_life_app/pages/login.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/login',
+  initialRoute: '/',
   routes: {
-    '/': (context) => Loading(),
-    '/home': (context) => Home(),
+    '/loading': (context) => Loading(),
+    '/': (context) => Home(),
     '/login': (context) => Login(),
   }
 ));
