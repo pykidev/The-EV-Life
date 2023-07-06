@@ -1,7 +1,6 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
-// import 'package:the_ev_life_app/customClasses/formData.dart';
+import 'package:the_ev_life_app/customClasses/formData.dart';
+import 'package:the_ev_life_app/pages/loading.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -19,6 +18,10 @@ class LoginFormState extends State<LoginForm>{
   final myController = TextEditingController();
   final myController2 = TextEditingController();
 
+  // final LoginFormData formData;
+
+  // const LoginFormState({super.key, required this.for})
+
   @override
   void dispose(){
     //clean up the controller when the widget is disposed
@@ -35,7 +38,7 @@ class LoginFormState extends State<LoginForm>{
       child: Column(
         children: <Widget>[
           //Add TextFormFields and ElevatedButton here
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
           TextFormField(
@@ -51,7 +54,7 @@ class LoginFormState extends State<LoginForm>{
               hintText: 'Username',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
           TextFormField(
@@ -63,11 +66,13 @@ class LoginFormState extends State<LoginForm>{
               return null;
             },
             controller: myController2,
+            obscureText: true,
+            obscuringCharacter: '*',
             decoration: const InputDecoration(
               hintText: 'Password',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
           ElevatedButton(
@@ -78,11 +83,13 @@ class LoginFormState extends State<LoginForm>{
                 // ScaffoldMessenger.of(context).showSnackBar(
                 //    SnackBar(content: Text('Username: ${myController.text}\nPassword: ${myController2.text}')),
                 // );
-                Navigator.pushNamed(context, '/loading', arguments: {
-                  'username': myController.text,
-                  'password':myController2.text,
-                  'formKey':_formKey.toString()
-                  });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Loading(
+                    formData: LoginFormData(myController.text, myController2.text)
+                    )
+                  )
+                );
               }
             }, 
             child: const Text(

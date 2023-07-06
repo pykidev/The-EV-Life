@@ -1,9 +1,6 @@
-// ignore_for_file: file_names
+class LoginFormData {
+  final String username;
+  final String password;
 
-Object makeFormDataMap(username, password, formKey){
-  return {
-    username: username, 
-    password: password, 
-    formKey: formKey
-    };
+  const LoginFormData(this.username, this.password);
 }

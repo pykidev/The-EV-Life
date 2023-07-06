@@ -3,17 +3,15 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-// import 'package:location_app_net_ninjas/pages/choose_location.dart';
 import 'package:the_ev_life_app/pages/home.dart';
-import 'package:the_ev_life_app/pages/loading.dart';
-// import 'package:location_app_net_ninjas/pages/loading.dart';
 import 'package:the_ev_life_app/pages/login.dart';
+import 'package:the_ev_life_app/pages/proAnalytics.dart';
 
 void main() => runApp(MaterialApp(
-  initialRoute: '/loading',
+  initialRoute: '/login',
   routes: {
-    '/loading': (context) => Loading(),
     '/': (context) => Home(),
     '/login': (context) => Login(),
+    '/proAnalytics': (context) => ProAnalyticsChargeData(),
   }
 ));

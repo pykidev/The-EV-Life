@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           IconButton(onPressed: () {
-                            Navigator.pushNamed(context, '/loading');
+                            Navigator.pushNamed(context, '/proAnalytics');
                           }, 
                           icon: Icon(Icons.analytics_outlined, color: Colors.white, size: 40.0,)),
                           IconButton(onPressed: () {

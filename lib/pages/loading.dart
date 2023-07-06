@@ -4,36 +4,31 @@
 
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-// import 'package:the_ev_life_app/customClasses/formData.dart';
+import 'package:the_ev_life_app/customClasses/formData.dart';
 import 'package:http/http.dart';
-import 'dart:convert';
+// import 'dart:convert';
 
 class Loading extends StatefulWidget {
+  final LoginFormData formData;
+  const Loading({super.key, required this.formData});
   @override
   _LoadingState createState() => _LoadingState();
 }
 
 class _LoadingState extends State<Loading> {
   // bool _dataReceived = false;
-
+  
+  // _LoadingState({required LoginFormData formData});
   void getData() async {
-    var url = Uri.https('jsonplaceholder.typicode.com','/todos/1');
-    Response response = await get(url);
-    await Future.delayed(Duration(seconds: 10));
+    print(widget.formData);
+    await Future.delayed(Duration(seconds: 7));
     Navigator.pushReplacementNamed(context, '/');
-
-    // if(response.statusCode == 200){
-    //   print(jsonDecode(response.body));
-    //   // _dataReceived = true;
-      
-    // }
   }
 
   @override
   void initState(){
     super.initState();
     getData();
-    
   }
 
   @override
