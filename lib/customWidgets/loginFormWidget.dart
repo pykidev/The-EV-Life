@@ -67,7 +67,7 @@ class LoginFormState extends State<LoginForm>{
             },
             controller: myController2,
             obscureText: true,
-            obscuringCharacter: '*',
+            obscuringCharacter: '\u2022',
             decoration: const InputDecoration(
               hintText: 'Password',
             ),
