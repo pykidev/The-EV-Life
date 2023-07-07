@@ -13,7 +13,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   CollectionReference carData =
-        FirebaseFirestore.instance.collection('car_data');
+        FirebaseFirestore.instance.collection('car_data_basic_analytics');
   // String documentId = carData.getDocs
   Future<String?> getUserDoc() async {
     QuerySnapshot querySnapshot = await carData.get();

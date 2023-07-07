@@ -12,7 +12,7 @@ class GetCarData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectionReference carData =
-        FirebaseFirestore.instance.collection('car_data');
+        FirebaseFirestore.instance.collection('car_data_basic_analytics');
 
     return FutureBuilder<DocumentSnapshot>(
       future: carData.doc(documentId).get(),
