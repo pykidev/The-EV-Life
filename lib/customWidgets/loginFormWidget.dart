@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:the_ev_life_app/customClasses/formData.dart';
-import 'package:the_ev_life_app/pages/loading.dart';
+// import 'package:the_ev_life_app/customClasses/formData.dart';
+// import 'package:the_ev_life_app/pages/loading.dart';
+// import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:the_ev_life_app/firebaseUtilityFuncs/auth.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -14,9 +17,30 @@ class LoginFormState extends State<LoginForm>{
   //and allows validation of the form
   //Note: This is a 'GlobalKey<FormState>'
   final _formKey = GlobalKey<FormState>();
+  String? errorMessage = '';
+  // bool isLogin = true;
 
-  final myController = TextEditingController();
-  final myController2 = TextEditingController();
+  final TextEditingController emailCtrl = TextEditingController();
+  final TextEditingController pwdCtrl = TextEditingController();
+
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      await Auth().signInWithEmailAndPassword(email: emailCtrl.text, password: pwdCtrl.text);
+    }
+    on FirebaseAuthException catch(e) {
+      setState((){
+        errorMessage = e.message;
+      });
+    }
+  }
+
+  Widget _errorMessage(){
+    return Text(errorMessage == '' ? '': '$errorMessage');
+  }
+  
+
+  // final myController = TextEditingController();
+  // final myController2 = TextEditingController();
 
   // final LoginFormData formData;
 
@@ -25,8 +49,8 @@ class LoginFormState extends State<LoginForm>{
   @override
   void dispose(){
     //clean up the controller when the widget is disposed
-    myController.dispose();
-    myController2.dispose();
+    emailCtrl.dispose();
+    pwdCtrl.dispose();
     super.dispose();
 
   }
@@ -49,9 +73,9 @@ class LoginFormState extends State<LoginForm>{
               }
               return null;
             },
-            controller: myController,
+            controller: emailCtrl,
             decoration: const InputDecoration(
-              hintText: 'Username',
+              hintText: 'Email',
             ),
           ),
           const SizedBox(
@@ -65,7 +89,7 @@ class LoginFormState extends State<LoginForm>{
               }
               return null;
             },
-            controller: myController2,
+            controller: pwdCtrl,
             obscureText: true,
             obscuringCharacter: '\u2022',
             decoration: const InputDecoration(
@@ -79,17 +103,7 @@ class LoginFormState extends State<LoginForm>{
             onPressed: () {
               //Validate returns true if form is valid, or false otherwise
               if(_formKey.currentState!.validate()){
-                //if the form is valid, display snackbar.
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //    SnackBar(content: Text('Username: ${myController.text}\nPassword: ${myController2.text}')),
-                // );
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Loading(
-                    formData: LoginFormData(myController.text, myController2.text)
-                    )
-                  )
-                );
+                signInWithEmailAndPassword();
               }
             }, 
             child: const Text(
@@ -98,6 +112,10 @@ class LoginFormState extends State<LoginForm>{
                 fontSize: 20.0
               ),)
             ),
+            const SizedBox(
+              height: 20.0
+            ),
+            _errorMessage(),
             // Text(myController.text())
         ],
       ),

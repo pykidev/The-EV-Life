@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:the_ev_life_app/customWidgets/loginFormWidget.dart';
 
-class Login extends StatefulWidget{
-  @override
-  LoginState createState() => LoginState();
-}
-
-class LoginState extends State<Login> {
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -24,8 +19,8 @@ class LoginState extends State<Login> {
               height: 45.0,
             ),
             Container(
-              padding: EdgeInsets.all(20.0),
-              child: LoginForm(),
+              padding: const EdgeInsets.all(20.0),
+              child: const LoginForm(),
             ),
           ],
         )),

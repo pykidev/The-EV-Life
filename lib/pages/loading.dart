@@ -19,17 +19,7 @@ class _LoadingState extends State<Loading> {
   // bool _dataReceived = false;
   
   // _LoadingState({required LoginFormData formData});
-  void getData() async {
-    print(widget.formData);
-    await Future.delayed(Duration(seconds: 7));
-    Navigator.pushReplacementNamed(context, '/');
-  }
 
-  @override
-  void initState(){
-    super.initState();
-    getData();
-  }
 
   @override
   Widget build(BuildContext context) {
